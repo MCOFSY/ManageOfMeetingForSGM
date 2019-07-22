@@ -1,0 +1,48 @@
+##################tomcat
+server:
+  port: 8080
+  tomcat:
+    uri-encoding: UTF-8
+
+
+#################spring数据源
+spring:
+  datasource:
+    username: root
+    password: 123456
+    ## ///中的第一个/相当于localhost或者127.0.0.1
+    url: jdbc:mysql:///zsq
+  freemarker:
+        template-loader-path: classpath:/templates/
+        prefix:
+        suffix: .ftl
+        charset: UTF-8
+        content-type: text/html
+        cache: false
+        request-context-attribute: request
+        check-template-location: true
+        allow-request-override: false
+        expose-request-attributes: false
+        expose-session-attributes: false
+        expose-spring-macro-helpers: false
+
+##################mybatis集成
+mybatis:
+  type-aliases-package: com.seg.domain
+  ## 用于复杂的逻辑，做xml编写
+  mapper-locations: classpath:mappers/**/*.xml
+
+
+#################### 通用mapper配置
+mapper:
+  ## 需要制定到具体的接口名
+  mappers: com.seg.common.BaseMapper
+  identity: MYSQL
+  not-empty: false
+
+
+##################### 分页插件pagehelper
+pagehelper:
+  auto-dialect: mysql
+  reasonable: true
+  support-methods-arguments: true
